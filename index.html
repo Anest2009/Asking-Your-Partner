@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Girlfriend/Boyfriend ?</title>
+</head>
+<body>
+    <div class="container">
+       <!-- Partners Name -->
+        <h1>Hey (Partner), do you want to be my ...?</h1>
+       
+        <img src="download.png" alt="Sad Cat" id="cat">
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+            width: 400px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        h1 {
+            color: #ff6699;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        button {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #66ff66;
+            color: #fff;
+        }
+
+        #no {
+            background-color: #ff6666;
+            color: #fff;
+        }
+
+        @keyframes dance {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .dance {
+            animation: dance 0.5s infinite;
+        }
+    </style>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const catImage = document.getElementById('cat');
+        const container = document.querySelector('.container');
+
+        
+        noButton.addEventListener('mouseover', () => {
+            const containerRect = container.getBoundingClientRect();
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+
+            // Calculate random positions within the container
+            const maxX = containerRect.width - buttonWidth;
+            const maxY = containerRect.height - buttonHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            // Set new position for the "No" button
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        });
+
+        
+        yesButton.addEventListener('click', () => {
+            catImage.src = "yay-cat.gif"; 
+            catImage.classList.add('dance');
+            document.body.style.backgroundColor = '#ff99cc';
+        });
+       
+        
+        catImage.style.transition = 'all 0.1s ease-in-out';
+
+        
+
+    </script>
+</body>
+</html>
